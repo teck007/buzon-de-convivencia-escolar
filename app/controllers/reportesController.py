@@ -117,6 +117,8 @@ def crear_reporte():
     # Normalizar valor devuelto por IA
     if ia_prioridad in ('alta', 'media', 'baja', 'spam'):
         prioridad = ia_prioridad
+    else:
+        prioridad = 'baja'
     
     # Validar que el reporte no sea spam
     if prioridad == "spam":
