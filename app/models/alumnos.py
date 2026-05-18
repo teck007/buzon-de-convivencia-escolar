@@ -1,4 +1,4 @@
-from mysqlconnection import connectToMySQL
+from app.utils.mysqlconnection import connectToMySQL
 
 class Alumnos:
     def __init__(self, data):

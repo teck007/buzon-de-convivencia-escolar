@@ -1,4 +1,4 @@
-from mysqlconnection import connectToMySQL
+from app.utils.mysqlconnection import connectToMySQL
 
 class Reporte:
     def __init__(self, data):
@@ -16,7 +16,7 @@ class Reporte:
         self.updated_at = data.get('updated_at')
 
     @classmethod
-    def crear_reporte(cls, nombre, rut, curso, correo, categoria, descripcion, prioridad='media', es_anonimo=False):
+    def guardar_reporte(cls, nombre, rut, curso, correo, categoria, descripcion, prioridad='media', es_anonimo=False):
         query = """
             INSERT INTO reportes (nombre, rut, curso, correo, categoria, descripcion, prioridad, es_anonimo) 
             VALUES (%(nombre)s, %(rut)s, %(curso)s, %(correo)s, %(categoria)s, %(descripcion)s, %(prioridad)s, %(es_anonimo)s)
@@ -70,7 +70,7 @@ class Reporte:
         return connectToMySQL('db_buzon').query_db(query, data)
     
     @classmethod
-    def mismo_nombre(self, otro_objeto):
+    def mismo_nombre(cls, otro_objeto):
         """Verifica si tiene el mismo rut que otro objeto"""
         if hasattr(otro_objeto, 'rut'):
             return self.rut == otro_objeto.rut
