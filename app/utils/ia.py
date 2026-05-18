@@ -4,14 +4,15 @@ from openai import OpenAI
 
 load_dotenv()
 client = OpenAI(
-    api_key=os.getenv("OPENAI_API_KEY"),
+    api_key=os.getenv("DEEPSEEK_API_KEY"),
+    base_url="https://api.deepseek.com",
 )
 
 def query_ia(mensaje_usuario: str) -> str:
     """Llama al modelo para clasificar la gravedad. Devuelve una de: 'alta','media','baja','spam'."""
     # Usar prompt que pida una única palabra exacta en minúsculas
     response = client.chat.completions.create(
-        model="gpt-4.1-mini",
+        model="deepseek-v4-flash",
         messages=[
             {
                 "role": "system",
