@@ -70,7 +70,7 @@ class Reporte:
         return connectToMySQL('db_buzon').query_db(query, data)
     
     @classmethod
-    def mismo_nombre(self, otro_objeto):
+    def mismo_nombre(cls, otro_objeto):
         """Verifica si tiene el mismo rut que otro objeto"""
         if hasattr(otro_objeto, 'rut'):
             return self.rut == otro_objeto.rut
